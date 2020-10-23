@@ -7,13 +7,13 @@
 </div>
 <section class="cards">
   <div>
-    Artículo 1
+    {{prodName1}}
   </div>
   <div>
-    Artículo 2
+    {{prodName2}}
   </div>
   <div>
-    Artículo 3
+    {{prodName3}}
   </div>
 </section>
 <link rel="stylesheet" href="public/css/hero.css" />

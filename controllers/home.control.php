@@ -6,7 +6,14 @@
  */
 
   function run(){
-    renderizar("home",Array());
+    $viewData = array(
+    "prodName1" => "PANADOL",
+    "prodName2" => "MIGRADORIXINA",
+    "prodName3" => "KETEROLAKO TRAMAMINA"
+    );
+
+    renderizar("home", $viewData);
   }
+
   run();
 ?>
