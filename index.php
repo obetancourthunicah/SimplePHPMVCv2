@@ -99,6 +99,18 @@ case "programa":
       include_once "controllers/security/programa.control.php":
       mw_redirectToLogin($_SERVER["QUERY_STRING"]);
     die();
+
+case "clientes":
+    ($logged) ?
+      include_once "controllers/mnt/clientes.control.php" :
+      mw_redirectToLogin($_SERVER["QUERY_STRING"]);
+    die();
+
+case "cliente":
+    ($logged) ?
+      include_once "controllers/mnt/cliente.control.php" :
+      mw_redirectToLogin($_SERVER["QUERY_STRING"]);
+    die();
 }
 
 addToContext("pageRequest", $pageRequest);
