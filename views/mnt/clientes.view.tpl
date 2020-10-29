@@ -17,7 +17,7 @@
           Correo
         </th>
         <th>
-          Actions
+          <a href="index.php?page=cliente&mode=INS&clientid=0">Nuevo</a>
         </th>
       </tr>
     </thead>
@@ -37,7 +37,9 @@
             {{clientemail}}
           </td>
           <td>
-            Actions
+            <a href="index.php?page=cliente&mode=UPD&clientid={{clientid}}">Editar</a><br/>
+            <a href="index.php?page=cliente&mode=DSP&clientid={{clientid}}">Mostrar</a><br />
+            <a href="index.php?page=cliente&mode=DEL&clientid={{clientid}}">Eliminar</a>
           </td>
         </tr>
         {{endfor clientes}}
