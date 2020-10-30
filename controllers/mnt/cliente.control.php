@@ -52,7 +52,15 @@ function run() {
 
     if (isset($_POST["btnsubmit"])) {
         mergeFullArrayTo($_POST, $viewData);
+        //Verificacion de XSS_Token
+        if (!(isset($_SESSION["cln_csstoken"]) && $_SESSION["cln_csstoken"] == $viewData["xsstoken"])) {
+            redirectWithMessage("No se puede realizar esta operación.", "index.php?page=clientes");
+            die();
+        }
+
         // Validaciones de Entrada de Datos
+
+
         switch ($viewData["mode"]){
         case "INS":
             $result = addNewClient(
@@ -117,8 +125,11 @@ function run() {
         if ($viewData["mode"] == 'DEL') {
             $viewData["deletemsg"] = "Esta Seguro de Eliminar este registro, es una operación definitiva.";
         }
-        
     }
+    // Crear un token unico
+    // Guardar en sesión ese token unico para su verificación posterior
+    $viewData["xsstoken"] = uniqid("cln", true);
+    $_SESSION["cln_csstoken"] = $viewData["xsstoken"];
     renderizar("mnt/cliente", $viewData);
 }
 

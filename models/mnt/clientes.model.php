@@ -23,6 +23,12 @@ function getClienteById($clientid) {
     return obtenerUnRegistro(sprintf($sqlstr, $clientid));
 }
 
+function getClientesPorFiltro($filtro) {
+    $ffiltro = $filtro.'%';
+    $sqlstr = "SELECT * from clients where clientIdnumber like '%s' or clientname like '%s';";
+    return obtenerRegistros(sprintf($sqlstr, $ffiltro, $ffiltro));
+}
+
 function addNewClient($clientname, $clientgender, $clientphone1, $clientphone2, $clientemail, $clientIdnumber, $clientbio, $clientstatus){
     $insSql = "INSERT INTO `clients` (`clientname`, `clientgender`, `clientphone1`, `clientphone2`,
 `clientemail`, `clientIdnumber`, `clientbio`, `clientstatus`, `clientdatecrt`, `clientusercreates`)

@@ -3,6 +3,7 @@
   <form method="post" action="index.php?page=cliente&mode={{mode}}&clientid={{clientid}}">
     <input type="hidden" name="mode" value="{{mode}}"/>
     <input type="hidden" name="clientid" value="{{clientid}}"/>
+    <input type="hidden" name="xsstoken" value="{{xsstoken}}"/>
     <div>
     <label for="clientname">Nombre del Cliente</label>
     <input {{readonly}} type="text" name="clientname" id="clientname" value="{{clientname}}" placeholder="Nombre del Cliente" />
