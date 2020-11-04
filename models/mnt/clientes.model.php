@@ -10,6 +10,7 @@ clientemail varchar(255)
 clientIdnumber varchar(45)
 clientbio varchar(5000)
 clientstatus char(3)
+catecod bigint(10)
 */
 function getAllClientes(){
     $sqlstr = "SELECT * from clients;";
@@ -29,10 +30,10 @@ function getClientesPorFiltro($filtro) {
     return obtenerRegistros(sprintf($sqlstr, $ffiltro, $ffiltro));
 }
 
-function addNewClient($clientname, $clientgender, $clientphone1, $clientphone2, $clientemail, $clientIdnumber, $clientbio, $clientstatus){
+function addNewClient($clientname, $clientgender, $clientphone1, $clientphone2, $clientemail, $clientIdnumber, $clientbio, $clientstatus, $catecod){
     $insSql = "INSERT INTO `clients` (`clientname`, `clientgender`, `clientphone1`, `clientphone2`,
-`clientemail`, `clientIdnumber`, `clientbio`, `clientstatus`, `clientdatecrt`, `clientusercreates`)
-VALUES ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', now(), 0);";
+`clientemail`, `clientIdnumber`, `clientbio`, `clientstatus`, `clientdatecrt`, `clientusercreates`, `catecod`)
+VALUES ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', now(), 0, %d);";
 
     return ejecutarNonQuery(
         sprintf(
@@ -44,15 +45,17 @@ VALUES ( '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', now(), 0);";
             $clientemail,
             $clientIdnumber,
             $clientbio,
-            $clientstatus
+            $clientstatus,
+            $catecod
         )
     );
 }
 
-function updateCliente ($clientname, $clientgender, $clientphone1, $clientphone2, $clientemail, $clientIdnumber, $clientbio, $clientstatus, $clientid) {
+function updateCliente ($clientname, $clientgender, $clientphone1, $clientphone2, $clientemail, $clientIdnumber, $clientbio, $clientstatus, $catecod, $clientid) {
     $updsql = "UPDATE `clients` SET  `clientname` = '%s', `clientgender` = '%s',
 `clientphone1` = '%s', `clientphone2` = '%s', `clientemail` = '%s',
-`clientIdnumber` = '%s', `clientbio` = '%s', `clientstatus` = '%s'
+`clientIdnumber` = '%s', `clientbio` = '%s', `clientstatus` = '%s',
+`catecod` = %d
 WHERE `clientid` = %d; ";
 
     return ejecutarNonQuery(
@@ -66,6 +69,7 @@ WHERE `clientid` = %d; ";
             $clientIdnumber,
             $clientbio,
             $clientstatus,
+            $catecod,
             $clientid
         )
     );

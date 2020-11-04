@@ -12,6 +12,8 @@ clientstatus char(3)
  */
 
 require_once "models/mnt/clientes.model.php";
+require_once "models/mnt/categorias.model.php";
+
 function run() {
     $viewData=array();
     $viewData["mode"] = "";
@@ -25,6 +27,8 @@ function run() {
     $viewData["clientIdnumber"] = "";
     $viewData["clientbio"] = "";
     $viewData["clientstatus"] = "ACT";
+    $viewData["catecod"] = 5; //Normal
+    $viewData["catecod_cmb"] = "";
 
     $viewData["clientgender_FEM"] = "selected";
     $viewData["clientgender_MAS"] = "";
@@ -71,7 +75,8 @@ function run() {
                 $viewData["clientemail"],
                 $viewData["clientIdnumber"],
                 $viewData["clientbio"],
-                $viewData["clientstatus"]
+                $viewData["clientstatus"],
+                $viewData["catecod"]
             );
             if ($result > 0) {
                 redirectWithMessage("Guardado Exitosamente", "index.php?page=clientes");
@@ -88,6 +93,7 @@ function run() {
                 $viewData["clientIdnumber"],
                 $viewData["clientbio"],
                 $viewData["clientstatus"],
+                $viewData["catecod"],
                 $viewData["clientid"]
             );
             if ($result >= 0) {
@@ -126,6 +132,7 @@ function run() {
             $viewData["deletemsg"] = "Esta Seguro de Eliminar este registro, es una operación definitiva.";
         }
     }
+    $viewData["catecod_cmb"] = addSelectedCmbArray(getcategoriasActivas(), "catecod", $viewData["catecod"]);
     // Crear un token unico
     // Guardar en sesión ese token unico para su verificación posterior
     $viewData["xsstoken"] = uniqid("cln", true);

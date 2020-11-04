@@ -43,6 +43,14 @@
       </select>
 
     </div>
+    <div>
+      <label for="catecod">Categoría de Cliente</label>
+      <select name="catecod" id="catecod" {{readonly}}>
+       {{foreach catecod_cmb}}
+          <option value="{{catecod}}" {{selected}}>{{catenom}}</option>
+       {{endfor catecod_cmb}}
+      </select>
+    </div>
     {{if deletemsg}}
       <div class="alert">
         {{deletemsg}}
