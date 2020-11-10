@@ -6,6 +6,7 @@ function generarMenu($usercod)
 {
     $menu = array();
     if(isAuthorized('dashboard',$usercod))$menu[] = array("mdlprg"=>"dashboard","mdldsc"=>"Administración");
+    if(isAuthorized('mantenimientos', $usercod)) $menu[] = array("mdlprg" => "mantenimientos", "mdldsc" => "Mantenimientos");
     addToContext('appmenu', $menu);
 }
 

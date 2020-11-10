@@ -122,6 +122,11 @@ case "categoria":
       include_once "controllers/mnt/categoria.control.php" :
       mw_redirectToLogin($_SERVER["QUERY_STRING"]);
     die();
+case "mantenimientos":
+    ($logged) ?
+      include_once "controllers/mantenimientos.control.php" :
+      mw_redirectToLogin($_SERVER["QUERY_STRING"]);
+    die();
 }
 
 addToContext("pageRequest", $pageRequest);

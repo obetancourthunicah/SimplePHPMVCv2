@@ -26,8 +26,7 @@
             </div>
 
             <div class="footer">
-                Derechos Reservados 2020 <br/>
-                Clase de Negocios WEB UNICAH
+                {{general_footer}}
             </div>
             {{foreach js_ref}}
                 <script src="{{uri}}"></script>

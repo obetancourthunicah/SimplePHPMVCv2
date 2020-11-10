@@ -27,8 +27,9 @@
           Nombre
         </th>
         <th>
-          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=INS&catecod=0"><span
-              class="ion-plus-circled"></span></a>
+          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=INS&catecod=0">
+            <span class="ion-plus-circled"></span>
+          </a>
         </th>
       </tr>
     </thead>
@@ -43,12 +44,15 @@
         </td>
 
         <td class="center">
-          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=UPD&catecod={{catecod}}"><span
-              class="ion-edit"></a> &nbsp;
-          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=DSP&catecod={{catecod}}"><span
-              class="ion-eye"></a>&nbsp;
-          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=DEL&catecod={{catecod}}"><span
-              class="ion-trash-a"></a>
+          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=UPD&catecod={{catecod}}">
+            <span class="ion-edit"></span>
+          </a> &nbsp;
+          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=DSP&catecod={{catecod}}">
+            <span class="ion-eye"></span>
+          </a>&nbsp;
+          <a class="btn depth-1 s-margin" href="index.php?page=categoria&mode=DEL&catecod={{catecod}}">
+            <span class="ion-trash-a"></span>
+          </a>
         </td>
       </tr>
       {{endfor categorias}}

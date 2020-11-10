@@ -3,7 +3,9 @@ body {
   font-size: 16px;
   margin: 0px;
   padding: 0px;
-  background-color: #f7f4ed;
+  background-color: #fff;
+  margin-top:50px;
+  margin-bottom:52px;
 }
 
 body, .menu, .contenido, .footer {
@@ -17,7 +19,7 @@ body, .menu, .contenido, .footer {
   width: 100%;
   top: 0px;
   left: 0px;
-  background-color: #C8C2B2;
+  background-color: #006411;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, .8);
   z-index: 9999;
 }
@@ -171,11 +173,15 @@ body, .menu, .contenido, .footer {
 }
 
 .footer {
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  z-index:9998;
   box-sizing: border-box;
   margin: 0px;
   text-align: center;
   padding: 0.5em;
-  background-color: #C8C2B2;
+  background-color: #006411;
   color: white;
   width: 100%;
 }
@@ -254,11 +260,11 @@ label {
 }
 
 .btn:hover {
-  background-color: #CCC;
+  background-color: #568c5f;
 }
 
 .btn-primary {
-  background-color: #C8C2B2;
+  background-color: #006411;
   color: white;
 }
 

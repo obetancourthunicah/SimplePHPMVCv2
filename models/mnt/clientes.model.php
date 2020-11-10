@@ -19,6 +19,14 @@ function getAllClientes(){
     return $resultSet;
 }
 
+function getCountClients()
+{
+  $sqlstr = "SELECT count(*) as Clientes from clients;";
+  $resultSet = array();
+  $resultSet = obtenerUnRegistro($sqlstr);
+  return $resultSet;
+}
+
 function getClienteById($clientid) {
     $sqlstr = "SELECT * from clients where clientid = %d;";
     return obtenerUnRegistro(sprintf($sqlstr, $clientid));
