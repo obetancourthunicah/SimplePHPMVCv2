@@ -28,6 +28,13 @@
             $_SESSION["userType"] = "";
         }
     }
+    function getUserCode(){
+        if (isset($_SESSION["userCode"])) {
+            return $_SESSION["userCode"];
+        } else {
+          return "";
+        }
+    }
     function mw_redirectToLogin($to){
         $loginstring = urlencode("?".$to);
         $url = "index.php?page=login&returnUrl=".$loginstring;

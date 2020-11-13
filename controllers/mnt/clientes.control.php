@@ -18,6 +18,10 @@ function run(){
         $viewData["clientes"] = getClientesPorFiltro($viewData["cln_txtfilter"]);
     }
 
+    $viewData["addbtnClnt"] = isAuthorized("addbtnClnt", getUserCode());
+    $viewData["edtbtnClnt"] = isAuthorized("edtbtnClnt", getUserCode());
+    $viewData["delbtnClnt"] = isAuthorized("delbtnClnt", getUserCode());
+
     renderizar("mnt/clientes", $viewData);
 }
 

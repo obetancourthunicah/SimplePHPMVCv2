@@ -31,7 +31,7 @@
           Correo
         </th>
         <th>
-          <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=INS&clientid=0"><span class="ion-plus-circled"></span></a>
+          {{if addbtnClnt}}<a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=INS&clientid=0"><span class="ion-plus-circled"></span></a>{{endif addbtnClnt}}
         </th>
       </tr>
     </thead>
@@ -51,9 +51,13 @@
             {{clientemail}}
           </td>
           <td class="center">
-            <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=UPD&clientid={{clientid}}"><span class="ion-edit"></a> &nbsp;
+            {{if ~edtbtnClnt}}
+              <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=UPD&clientid={{clientid}}"><span class="ion-edit"></a> &nbsp;
+            {{endif ~edtbtnClnt}}
             <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=DSP&clientid={{clientid}}"><span class="ion-eye"></a>&nbsp;
-            <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=DEL&clientid={{clientid}}"><span class="ion-trash-a"></a>
+            {{if ~delbtnClnt}}
+              <a class="btn depth-1 s-margin" href="index.php?page=cliente&mode=DEL&clientid={{clientid}}"><span class="ion-trash-a"></a>
+            {{endif ~delbtnClnt}}
           </td>
         </tr>
         {{endfor clientes}}

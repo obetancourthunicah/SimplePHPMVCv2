@@ -196,8 +196,20 @@ function renderTemplate($template_block, $context, $parent = null, $root = null)
                 $currentContext = trim(
                     str_replace("}}", "", str_replace("{{ifnot", "", $node))
                 );
-                if (isset($context[$currentContext]) ) {
-                    $ifNotCondition = ($context[$currentContext]) == false;
+                if (strpos($currentContext, "~") !== false) {
+                    $tcurrentContext = str_replace("~", "", $currentContext);
+                    if (isset($root[$tcurrentContext]) ) {
+                        $ifNotCondition = ($root[$tcurrentContext]) == false;
+                    }
+                } elseif (strpos($currentContext, "&") !== false) {
+                    $tcurrentContext = str_replace("&", "", $currentContext);
+                    if (isset($parent[$tcurrentContext]) ) {
+                        $ifNotCondition = ($parent[$tcurrentContext]) == false;
+                    }
+                } else {
+                    if (isset($context[$currentContext]) ) {
+                        $ifNotCondition = ($context[$currentContext]) == false;
+                    }
                 }
                 continue;
             }
@@ -209,8 +221,20 @@ function renderTemplate($template_block, $context, $parent = null, $root = null)
                 $currentContext = trim(
                     str_replace("}}", "", str_replace("{{if", "", $node))
                 );
-                if (isset($context[$currentContext]) ) {
-                    $ifCondition = ($context[$currentContext]) && true;
+                if (strpos($currentContext, "~") !== false) {
+                    $tcurrentContext = str_replace("~", "", $currentContext);
+                    if (isset($root[$tcurrentContext])) {
+                        $ifCondition = ($root[$tcurrentContext]) && true;
+                    }
+                } elseif (strpos($currentContext, "&") !== false) {
+                    $tcurrentContext = str_replace("&", "", $currentContext);
+                    if (isset($parent[$tcurrentContext]) ) {
+                        $ifCondition = ($parent[$tcurrentContext]) && true;
+                    }
+                } else {
+                    if (isset($context[$currentContext]) ) {
+                        $ifCondition = ($context[$currentContext]) && true;
+                    }
                 }
                 continue;
             }
@@ -266,10 +290,10 @@ function parseTemplate($htmlTemplate)
 {
     $regexp_array = array( 'foreach'       => '(\{\{foreach [~&]?\w*\}\})',
                             'endfor'       => '(\{\{endfor [~&]?\w*\}\})',
-                            'if'           => '(\{\{if \w*\}\})',
-                            'if_not'       =>'(\{\{ifnot \w*\}\})',
-                            'if_close'     => '(\{\{endif \w*\}\})',
-                            'ifnot_close'  => '(\{\{endifnot \w*\}\})');
+                            'if'           => '(\{\{if [~&]?\w*\}\})',
+                            'if_not'       => '(\{\{ifnot [~&]?\w*\}\})',
+                            'if_close'     => '(\{\{endif [~&]?\w*\}\})',
+                            'ifnot_close'  => '(\{\{endifnot [~&]?\w*\}\})');
 
     $tag_regexp = "/" . join("|", $regexp_array). "/";
 
